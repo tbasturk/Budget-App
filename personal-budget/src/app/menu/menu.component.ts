@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pb-menu',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  public userLoggedIn = false;
 
+  constructor(private dataService: DataService, public router: Router) { }
+
+  loginStatus$: Observable<boolean>;
   ngOnInit(): void {
+    this.loginStatus$ = this.dataService.isloggedIn;
   }
+
+  onLogOut() {
+    this.dataService.logout();
+  }
+
 
 }

@@ -1,0 +1,52 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DataService {
+
+  //DataObservable: Observable<any>;
+  //loginStatus = new Subject<boolean>();
+
+  constructor(private http: HttpClient, private router: Router) { }
+
+  private loginStatus = new BehaviorSubject<boolean>(this.checkLoginStatus());
+
+  checkLoginStatus(): boolean {
+    return false;
+  }
+
+  get isloggedIn() {
+    return this.loginStatus.asObservable();
+  }
+
+  login(x) {
+    this.http.post('http://localhost:3000/api/login', x)
+    .subscribe((res: any) => {
+      console.log('test');
+      if (res && res.success) {
+        localStorage.setItem('access', res.token);
+        this.loginStatus.next(true);
+        this.router.navigate(['/dashboard']);
+      }
+    }, (error: any) => {
+      console.log(error);
+      document.getElementById('message').innerHTML = error.error.err;
+      document.getElementById('message').style.visibility = 'visible';
+    });
+
+
+  }
+
+  logout() {
+    localStorage.removeItem('access');
+    this.loginStatus.next(false);
+    this.router.navigate(['/login']);
+
+
+  }
+
+}

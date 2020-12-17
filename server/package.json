@@ -18,7 +18,13 @@
   },
   "homepage": "https://github.com/tbasturk/personal-budget#readme",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
+    "mysql": "^2.18.1",
+    "sql": "^0.78.0"
   }
 }

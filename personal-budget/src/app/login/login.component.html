@@ -1,1 +1,44 @@
-<p>login works!</p>
+<!--
+<p>Welcome to your budget app!</p>
+<label for="username">Username:</label>
+<input type="text" placeholder="Enter email-address" id="username">
+
+<br>
+<br>
+
+<label for="password">Password: </label>
+<input type="text" placeholder="Enter password" id="password">
+
+<br>
+<br>
+
+<button (click)="login()">login</button>
+
+<button (click)="navigateSignup()">Register</button>
+-->
+
+<div class="login">
+  <h1 class="head">Login</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="row">
+          <label for="username">Username</label>
+          <br>
+          <input type="text" formControlName="username" name="username" id="username">
+      </div>
+      <div class="row">
+          <label for="password">Password</label>
+          <br>
+          <input type="password" formControlName="password" name="password" id="password">
+      </div>
+      <p id="message" style="visibility: hidden;"></p>
+      <div>
+          <button>Login</button>
+      </div>
+  </form>
+</div>
+
+
+
+
+
+
