@@ -24,7 +24,7 @@ export class DataService {
   }
 
   login(x) {
-    this.http.post('http://localhost:3000/api/login', x)
+    this.http.post('http://161.35.59.8/api/login', x)
     .subscribe((res: any) => {
       console.log('test');
       if (res && res.success) {

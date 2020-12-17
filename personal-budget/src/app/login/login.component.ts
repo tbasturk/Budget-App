@@ -34,32 +34,6 @@ export class LoginComponent implements OnInit {
     };
 
     this.dataService.login(login);
-    /*
-    this.http.post('http://localhost:3000/api/login', login)
-    .subscribe((res: any) => {
-      console.log('test');
-      if (res && res.success) {
-        localStorage.setItem('access', res.token);
-        this.dataService.login();
-      }
-    }, (error: any) => {
-      console.log(error);
-      document.getElementById('message').innerHTML = error.error.err;
-      document.getElementById('message').style.visibility = 'visible';
-    });
-
-*/
-  }
-  /*
-
- login() {
-
-   this.dataService.login();
- }
-
-  navigateSignup() {
-    this.router.navigate(['/signup'])
   }
 
-  */
 }
